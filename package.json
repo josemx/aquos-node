@@ -1,0 +1,23 @@
+{
+  "name": "aquos-node",
+  "version": "0.1.0",
+  "description": "Node interface with RS-232 Sharp TVs",
+  "main": "index.js",
+  "author": "José Martínez",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d lib",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "argparse": "^1.0.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  }
+}
