@@ -1,6 +1,6 @@
 # aquos-node
 
-`aquos-node` is a node cli that interfaces with Sharp Aquos tvs throught the RS-232 port.
+`aquos-node` is a node cli that interfaces with Sharp Aquos TVs through the RS-232 port.
 
 | subcommand | paramaters    |
 |------------|---------------|
