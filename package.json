@@ -2,9 +2,14 @@
   "name": "aquos-node",
   "version": "0.1.0",
   "description": "Node interface with RS-232 Sharp TVs",
-  "main": "index.js",
+  "keywords": ["sharp", "aquos", "rs232"],
   "author": "José Martínez",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:josemx/aquos-node.git"
+  },
   "license": "MIT",
+  "bin": "./lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
     "feature-test-build": "yarn build && node lib/index.js",
