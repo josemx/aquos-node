@@ -16,6 +16,13 @@ parser.addArgument(
   },
 );
 
+parser.addArgument(
+  ['--verbose'],
+  {
+    action: 'storeTrue',
+    help: 'Port to use.',
+  },
+);
 
 const commonOptVals = {
   nargs: 1,

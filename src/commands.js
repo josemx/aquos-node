@@ -31,7 +31,6 @@ const input = value => {
 
 const volume = value => {
   const vai = parseInt(value);
-  console.log(vai, vai <= 0, vai > 61, vai <= 0 && vai > 61);
   if (vai >= 0 && vai < 61) {
     console.log(`[volume]: adjusting volume to ${value}`);
     return returnPad('VOLM' + vai);
