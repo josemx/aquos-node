@@ -2,7 +2,11 @@
   "name": "aquos-node",
   "version": "0.1.0",
   "description": "Node interface with RS-232 Sharp TVs",
-  "keywords": ["sharp", "aquos", "rs232"],
+  "keywords": [
+    "sharp",
+    "aquos",
+    "rs232"
+  ],
   "author": "José Martínez",
   "repository": {
     "type": "git",
