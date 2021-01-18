@@ -2,53 +2,54 @@ import SerialPort from 'serialport';
 
 const InvalidInputError = new Error('Invalid value. Aborted');
 
-const returnPad = commandString => commandString.padEnd(8) + '\r';
+const returnPad = commandString => `${commandString.padEnd(8)}\r`;
 
-const power = value => {
+const power = (value) => {
   if (value === 'on' || value === 'off') {
     console.log(`[power]: turning ${value} tv`);
-    const cv = value === 'on' ? 1 : 0
-    return returnPad('POWR' + cv);
-  } else {
-    throw InvalidInputError;
+    const cv = value === 'on' ? 1 : 0;
+    return returnPad(`POWR${cv}`);
   }
+
+  throw InvalidInputError;
 };
 
-const input = value => {
-  const vai = parseInt(value);
+const input = (value) => {
+  const vai = parseInt(value, 10);
   if (value === 'toggle') {
     console.log('[input]: toggling input');
     return returnPad('ITGDx');
-  } else if (value === 'tv' || (vai > 0 && vai < 8)) {
+  }
+  if (value === 'tv' || (vai > 0 && vai < 8)) {
     console.log(`[input]: switching to input ${value}`);
     const IxVD = value === 'tv' ? 'ITVD' : 'IAVD';
     const iv = value === 'tv' ? 0 : vai;
     return returnPad(IxVD + iv);
-  } else {
-    throw InvalidInputError;
   }
+
+  throw InvalidInputError;
 };
 
-const volume = value => {
-  const vai = parseInt(value);
+const volume = (value) => {
+  const vai = parseInt(value, 10);
   if (vai >= 0 && vai < 61) {
     console.log(`[volume]: adjusting volume to ${value}`);
-    return returnPad('VOLM' + vai);
-  } else {
-    throw InvalidInputError;
+    return returnPad(`VOLM${vai}`);
   }
+
+  throw InvalidInputError;
 };
 
-const mute = value => {
+const mute = (value) => {
   if (value === 'true' || value === 'false') {
-    const bool = value === 'true' ? true : false;
+    const bool = value === 'true';
     const type = bool ? '' : 'un';
     console.log(`[mute]: ${type}muting`);
     const mv = bool ? 1 : 0;
-    return returnPad('MUTE' + mv);
-  } else {
-    throw InvalidInputError;
+    return returnPad(`MUTE${mv}`);
   }
+
+  throw InvalidInputError;
 };
 
 const commands = {
@@ -58,7 +59,7 @@ const commands = {
   mute,
 };
 
-const processCommand = args => {
+const processCommand = (args) => {
   const { command, value } = args;
 
   const aquos = new SerialPort('/dev/cu.usbserial');
